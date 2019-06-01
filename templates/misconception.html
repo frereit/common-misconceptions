@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Random common misconception</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/misconception.css') }}">
+    <link href="https://fonts.googleapis.com/css?family=Karla&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="centered">
+        <h1 style="text-align: center; font-family: 'Karla', sans-serif;">Did you know?</h1>
+        <p id="misconception">{{ misconception }}</p>
+        <button class="reload-button" onclick=next_misconception()>Random misconception</button>
+    </div>
+    <div class="info-footer">
+        <p style="float: left">Misconceptions are fetched from the <a href="https://en.wikipedia.org/w/index.php?title=List_of_common_misconceptions">List of common misconceptions</a>.</p>
+        <p style="float: right">Built with <a href="https://www.python.org/">Python</a> and <a href="http://flask.pocoo.org/">Flask</a>.</p>
+    </div>
+
+<script>
+    function next_misconception(){
+        var xmlhttp = new XMLHttpRequest();
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState === XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+               if (xmlhttp.status === 200) {
+                   document.getElementById("misconception").innerHTML = xmlhttp.responseText;
+               }
+               else if (xmlhttp.status === 400) {
+                  console.error('There was an error 400 when trying to fetch a new misconception.');
+               }
+               else {
+                   console.info('Trying to fetch random.json returned status code '  + xmlhttp.status);
+               }
+            }
+        };
+
+        xmlhttp.open("GET", "random", true);
+        xmlhttp.send();
+    }
+</script>
+</body>
+</html>
