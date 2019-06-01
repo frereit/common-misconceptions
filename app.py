@@ -1,5 +1,6 @@
-import json
 import random
+import time
+
 import wikipedia
 from flask import Flask, render_template, jsonify
 
@@ -33,6 +34,11 @@ def random_misconception():
 @app.route('/random')
 def random_misconception_raw():
     return random.choice(misconceptions)
+
+
+@app.route('/all.json')
+def all_misconceptions_raw():
+    return jsonify(misconceptions)
 
 
 if __name__ == "__main__":
