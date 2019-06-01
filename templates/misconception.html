@@ -22,19 +22,17 @@
         var xmlhttp = new XMLHttpRequest();
 
         xmlhttp.onreadystatechange = function() {
-            if (xmlhttp.readyState === XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+            if (xmlhttp.readyState === XMLHttpRequest.DONE) {
                if (xmlhttp.status === 200) {
                    document.getElementById("misconception").innerHTML = xmlhttp.responseText;
                }
-               else if (xmlhttp.status === 400) {
-                  console.error('There was an error 400 when trying to fetch a new misconception.');
-               }
                else {
+                   document.getElementById("misconception").innerHTML = "Something went wrong...";
                    console.info('Trying to fetch random.json returned status code '  + xmlhttp.status);
                }
             }
         };
-
+        document.getElementById("misconception").innerHTML = "Loading...";
         xmlhttp.open("GET", "random", true);
         xmlhttp.send();
     }

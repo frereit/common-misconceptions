@@ -1,5 +1,4 @@
 import random
-import time
 
 import wikipedia
 from flask import Flask, render_template, jsonify
