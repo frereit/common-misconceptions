@@ -14,7 +14,7 @@
     </div>
     <div class="info-footer">
         <p style="float: left">Misconceptions are fetched from the <a href="https://en.wikipedia.org/w/index.php?title=List_of_common_misconceptions">List of common misconceptions</a>.</p>
-        <p style="float: right">Built with <a href="https://www.python.org/">Python</a> and <a href="http://flask.pocoo.org/">Flask</a>.</p>
+        <p style="float: right; margin-right: 1em">Built with ♥ by <a href="https://github.com/frereit/commonmisconceptions">frereit</a></p>
     </div>
 
 <script>
@@ -32,7 +32,11 @@
                }
             }
         };
-        document.getElementById("misconception").innerHTML = "Loading...";
+        setTimeout(() => {
+            if (xmlhttp.readyState < XMLHttpRequest.DONE) {
+                document.getElementById("misconception").innerHTML = "Loading...";
+            }
+        } , 1000);
         xmlhttp.open("GET", "random", true);
         xmlhttp.send();
     }

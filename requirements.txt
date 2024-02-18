@@ -1,15 +1,2 @@
-beautifulsoup4==4.7.1
-certifi==2022.12.7
-chardet==3.0.4
-Click==7.0
-Flask==1.0.3
-idna==2.8
-itsdangerous==1.1.0
-Jinja2==2.11.3
-lxml==4.9.1
-MarkupSafe==1.1.1
-requests==2.22.0
-soupsieve==1.9.1
-urllib3==1.26.5
-Werkzeug==2.2.3
-wikipedia==1.4.0
+wikipedia~=1.4.0
+flask~=3.0.2
